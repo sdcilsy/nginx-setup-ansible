@@ -1,0 +1,13 @@
+---
+- name: Update repository nginx
+  apt_repository: repo='ppa:nginx/stable' state=present update_cache=yes
+  become: yes
+
+- name: Install Nginx
+  apt: name={{ variable }} state=present update_cache=true
+
+- name: Copy nginx configuration 
+  template: src=nginx.conf dest=/etc/nginx/conf.d/default.conf
+
+- name: Copy index.html 
+  template: src=index.html dest=/var/www/html/index.html

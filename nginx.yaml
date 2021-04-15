@@ -1,0 +1,6 @@
+---
+- name: Install Nginx with ansible
+  hosts: client
+  become: yes
+  roles:
+  - nginx
